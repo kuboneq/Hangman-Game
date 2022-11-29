@@ -2,6 +2,14 @@ from time import sleep
 from random import *
 import sys
 
+
+def tries_names():
+    if tries > 1 or tries == 0:
+        print("{} tries left.".format(tries))
+    else:
+        print("{} try left.".format(tries))    
+
+
 def drawing_hangman(tries):
     if tries == 0:
         print('''
@@ -132,10 +140,8 @@ while True:
                     tries -= 1
                     drawing_hangman(tries)
                     word_tries.append(guess)
-                    if tries > 1 or tries == 0:
-                        print("{} tries left.".format(tries))
-                    else:
-                        print("{} try left.".format(tries))
+                    tries_names()
+
                 else:
                     print("You have already typed in this word! It's not correct!")
             elif len(guess.lower()) == 1:
@@ -155,11 +161,7 @@ while True:
                     print("You didn't guess it!")
                     all_tries.append(guess.lower())
                     tries -= 1
-                    if tries > 1 or tries == 0:
-                        print("{} tries left.".format(tries))
-                    else:
-                        print("{} try left.".format(tries))
-                    # rysowanie wisielca
+                    tries_names()
                     drawing_hangman(tries)
 
             elif len(guess) > 1:
