@@ -172,9 +172,3 @@ while True:
         print(f"You run out of tries! U lost! The word was {word.upper()}")
         sys.exit()
                         
-            
-            
-                    # for char in range(len(word)):
-                    #     if word[char] == guess:
-                    #         print("You guessed it!\n")
-                    #         under_lines[char] = guess
