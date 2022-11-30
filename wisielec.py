@@ -1,6 +1,6 @@
-from time import sleep
 from random import *
 import sys
+import os
 
 
 def tries_names():
@@ -11,98 +11,98 @@ def tries_names():
 
 
 def drawing_hangman(tries):
-    if tries == 0:
-        print('''
-______
+  if tries == 0:
+    print('''
+======
 |    |
 |    O
 |   /|\\
 |   / \\
 |    
-----------
+==========
         ''')
-    if tries == 1:    
-        print('''
-______
+  if tries == 1:
+    print('''
+======
 |    |
 |    O
 |   /|\\
 |   / 
 |    
-----------
+==========
         ''')
-    if tries == 2:    
-        print('''
-______
+  if tries == 2:
+    print('''
+======
 |    |
 |    O
 |   /|\\
 |    
 |    
-----------
+==========
         ''')
-    if tries == 3:
-        print('''
-______
+  if tries == 3:
+    print('''
+======
 |    |
 |    O
 |   /|
 |   
 |    
-----------
+==========
         ''')
-    if tries == 4:    
-        print('''
-______
+  if tries == 4:
+    print('''
+======
 |    |
 |    O
 |    |
 |   
 |    
-----------
+==========
         ''')
-    if tries == 5:    
-        print('''
-______
+  if tries == 5:
+    print('''
+======
 |    |
 |    O
 |   
 |    
 |    
-----------
+==========
         ''')
-    if tries == 6:    
-        print('''
-______
+  if tries == 6:
+    print('''
+======
 |    |
 |    
 |   
 |    
 |    
-----------
+==========
         ''')
-    if tries == 7:    
-        print('''
-______
+  if tries == 7:
+    print('''
+======
 |    
 |    
 |   
 |    
 |    
-----------
+==========
         ''')
-    if tries == 8:    
-        print('''       
+  if tries == 8:
+    print('''       
 |    
 |    
 |   
 |    
 |    
-----------
+==========
         ''')
-    if tries == 9:    
-        print('''         
-----------
+  if tries == 9:
+    print('''         
+==========
 ''')
     
 
@@ -128,7 +128,9 @@ while True:
         if '_' not in under_lines:
             print(f"You guessed the word which was {word.upper()}!")
             sys.exit()
-        guess = input("Type in the letter >>> ")
+        guess = input("\nType in the letter >>> ")
+
+        os.system('cls')
 
         if guess.lower() == word:
             print(f"You guessed the word which was {word.upper()}!")
@@ -138,7 +140,7 @@ while True:
                 if guess not in word_tries:
                     print("It's not the correct word!")
                     tries -= 1
-                    drawing_hangman(tries)
+                    
                     word_tries.append(guess)
                     tries_names()
 
@@ -162,15 +164,18 @@ while True:
                     all_tries.append(guess.lower())
                     tries -= 1
                     tries_names()
-                    drawing_hangman(tries)
+                    
 
             elif len(guess) > 1:
                 print(f'Enter ONE letter or a {len(word)} letter word! -> Your word is {len(guess)} letters long')
-                sleep(1)
+                
         else: 
             print("Enter a letter")
-            sleep(1)
+            
     else:
         print(f"You run out of tries! U lost! The word was {word.upper()}")
         sys.exit()
+    drawing_hangman(tries)
+    
+
                         
